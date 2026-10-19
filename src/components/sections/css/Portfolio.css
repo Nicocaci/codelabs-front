@@ -1,0 +1,106 @@
+.portfolio {
+  padding: 96px 0 112px;
+  border-top: 1px solid var(--border);
+}
+
+.portfolio__eyebrow {
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.portfolio__title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  letter-spacing: -0.03em;
+}
+
+.portfolio__text {
+  max-width: 640px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.portfolio__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 48px 0 36px;
+  border-bottom: 1px solid var(--border);
+}
+
+.portfolio__filter {
+  padding: 0 0 12px;
+  margin-bottom: -1px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--text-h);
+  }
+
+  &[aria-pressed='true'] {
+    color: var(--text-h);
+    border-bottom-color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+}
+
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 48px;
+}
+
+.portfolio__filters + .portfolio__grid {
+  margin-top: 0;
+}
+
+.portfolio__message {
+  margin-top: 48px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+/* Placeholder mientras cargan los datos: mismo tamaño aproximado que una card */
+.portfolio__skeleton {
+  min-height: 420px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  animation: portfolio-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes portfolio-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio__skeleton {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 64px 0 80px;
+  }
+
+  .portfolio__grid {
+    grid-template-columns: 1fr;
+  }
+}

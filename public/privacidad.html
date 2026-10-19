@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Política de privacidad | Codelabs</title>
+    <link rel="icon" type="image/svg+xml" href="/app-icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0c1618;
+        --probeta: #2a4b4a;
+        --reactivo: #3ee6a0;
+        --alerta: #ffb84d;
+        --bata: #eef3f0;
+        --surface: color-mix(in srgb, var(--probeta) 35%, var(--ink));
+        --border: color-mix(in srgb, var(--probeta) 70%, var(--ink));
+        --text: rgba(238, 243, 240, 0.72);
+        --text-muted: rgba(238, 243, 240, 0.42);
+        --font-sans: 'Space Grotesk', system-ui, 'Segoe UI', sans-serif;
+        --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+        color-scheme: dark;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        font-size: 17px;
+        line-height: 1.7;
+        color: var(--text);
+        background: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--reactivo);
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--reactivo);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      ::selection {
+        background: var(--reactivo);
+        color: var(--ink);
+      }
+
+      .top {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .top__inner,
+      main,
+      footer {
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .top__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .top__inner img {
+        display: block;
+        height: 56px;
+      }
+
+      .back {
+        font-family: var(--font-mono);
+        font-size: 14px;
+        text-decoration: none;
+      }
+
+      main {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--reactivo);
+      }
+
+      h1,
+      h2 {
+        color: var(--bata);
+        line-height: 1.15;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(32px, 6vw, 48px);
+        letter-spacing: -0.03em;
+      }
+
+      .updated {
+        margin: 16px 0 48px;
+        font-family: var(--font-mono);
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      h2 {
+        margin: 48px 0 12px;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+      }
+
+      h2 span {
+        margin-right: 10px;
+        font-family: var(--font-mono);
+        font-size: 14px;
+        color: var(--reactivo);
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      ul {
+        padding-left: 0;
+        margin: 0 0 14px;
+        list-style: none;
+      }
+
+      li {
+        position: relative;
+        padding-left: 24px;
+        margin-bottom: 8px;
+      }
+
+      li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        font-family: var(--font-mono);
+        color: var(--reactivo);
+      }
+
+      strong {
+        color: var(--bata);
+        font-weight: 600;
+      }
+
+      .legend {
+        padding: 20px 22px;
+        margin-top: 48px;
+        font-size: 15px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--alerta);
+        border-radius: 10px;
+      }
+
+      .legend p:last-child {
+        margin-bottom: 0;
+      }
+
+      footer {
+        padding-top: 24px;
+        padding-bottom: 40px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+      }
+
+      @media (max-width: 640px) {
+        body {
+          font-size: 16px;
+        }
+
+        main {
+          padding-top: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="top__inner">
+        <a href="/" aria-label="Volver al inicio de Codelabs">
+          <img src="/logo-para-fondo-oscuro.svg" alt="Codelabs" />
+        </a>
+        <a class="back" href="/">← volver al inicio</a>
+      </div>
+    </header>
+
+    <main>
+      <p class="eyebrow">// privacidad</p>
+      <h1>Política de privacidad</h1>
+      <p class="updated">Última actualización: 19 de octubre de 2026</p>
+
+      <p>
+        En Codelabs cuidamos los datos que nos dejás. Acá te contamos qué datos
+        juntamos, para qué los usamos y cómo podés pedirnos que los corrijamos
+        o los borremos.
+      </p>
+
+      <h2><span>01</span>Quién es el responsable</h2>
+      <p>
+        El responsable de tus datos es <strong>Nicolás Caci</strong>, que
+        opera bajo el nombre comercial <strong>Codelabs</strong>, con domicilio
+        en la Ciudad de Buenos Aires, Argentina.
+      </p>
+      <!-- TODO: cuando te inscribas en ARCA, agregá tu CUIT acá -->
+      <p>
+        Contacto:
+        <a href="https://wa.me/5491173660802" target="_blank" rel="noopener noreferrer">WhatsApp +54 9 11 7366-0802</a>.
+        <!-- TODO: agregá tu mail cuando lo tengas: o por mail a <a href="mailto:hola@tudominio.com.ar">hola@tudominio.com.ar</a> -->
+      </p>
+
+      <h2><span>02</span>Qué datos juntamos</h2>
+      <p>Solo los que vos nos das cuando nos contactás:</p>
+      <ul>
+        <li>
+          <strong>Al agendar una reunión:</strong> nombre, email, teléfono o
+          WhatsApp (opcional), nombre y rubro de tu negocio, el servicio que te
+          interesa y lo que nos cuentes sobre tu proyecto.
+        </li>
+        <li>
+          <strong>Al escribirnos por WhatsApp o email:</strong> tu número o
+          dirección y el contenido de la conversación.
+        </li>
+      </ul>
+      <p>
+        Darnos estos datos es voluntario. Si no los completás, no podemos
+        agendar la reunión ni responderte, pero podés navegar el sitio sin dar
+        ningún dato.
+      </p>
+      <p>
+        No pedimos datos sensibles (salud, religión, opiniones políticas, etc.)
+        y te pedimos que no los incluyas en tus mensajes.
+      </p>
+
+      <h2><span>03</span>Para qué los usamos</h2>
+      <ul>
+        <li>Coordinar y hacer la reunión que agendaste.</li>
+        <li>Responder tu consulta y prepararte una propuesta o presupuesto.</li>
+        <li>
+          Hacer un seguimiento de esa consulta. Si nos pedís que no te
+          escribamos más, no lo hacemos.
+        </li>
+      </ul>
+      <p>
+        No vendemos ni alquilamos tus datos, y no los usamos para enviarte
+        publicidad sin tu consentimiento.
+      </p>
+
+      <h2><span>04</span>Con quién los compartimos</h2>
+      <p>
+        Para funcionar usamos servicios de terceros que procesan tus datos por
+        cuenta nuestra:
+      </p>
+      <ul>
+        <li><strong>Cal.com</strong>: el calendario donde agendás la reunión.</li>
+        <li>
+          <strong>Google</strong> (Calendar y Meet): para registrar la reunión
+          y hacer la videollamada.
+        </li>
+        <li><strong>WhatsApp</strong> (Meta): si nos escribís por ese medio.</li>
+        <li><strong>Vercel</strong>: el servicio que aloja este sitio.</li>
+      </ul>
+      <p>
+        Algunos de estos servicios guardan los datos en servidores fuera de
+        Argentina, por ejemplo en Estados Unidos. Al darnos tus datos por
+        estos medios, aceptás esa transferencia, que se hace solo para los
+        fines de esta política.
+      </p>
+      <p>
+        Fuera de eso, solo compartimos tus datos si una autoridad competente
+        nos lo exige por ley.
+      </p>
+
+      <h2><span>05</span>Cuánto tiempo los guardamos</h2>
+      <p>
+        Mientras tengamos una conversación o un proyecto en curso con vos. Si
+        no avanzamos, los borramos dentro de los 12 meses desde el último
+        contacto, salvo que una ley nos obligue a conservarlos más tiempo.
+      </p>
+
+      <h2><span>06</span>Cookies</h2>
+      <p>
+        Este sitio no usa cookies propias de publicidad ni de analítica. El
+        calendario de Cal.com que está integrado puede usar cookies técnicas
+        necesarias para que funcione la reserva.
+      </p>
+
+      <h2><span>07</span>Tus derechos</h2>
+      <p>En cualquier momento podés pedirnos:</p>
+      <ul>
+        <li><strong>Acceso:</strong> saber qué datos tuyos tenemos.</li>
+        <li><strong>Rectificación y actualización:</strong> corregir datos que estén mal o desactualizados.</li>
+        <li><strong>Supresión:</strong> que borremos tus datos.</li>
+      </ul>
+      <p>
+        Escribinos por los medios del punto 01. Respondemos los pedidos de
+        acceso dentro de los 10 días corridos y los de rectificación,
+        actualización o supresión dentro de los 5 días hábiles, como indica la
+        Ley 25.326. El acceso es gratuito si lo pedís con intervalos de al
+        menos seis meses, salvo que tengas un interés legítimo para hacerlo
+        antes.
+      </p>
+
+      <h2><span>08</span>Seguridad</h2>
+      <p>
+        Usamos conexiones cifradas (HTTPS) y servicios con controles de acceso
+        para proteger tus datos. Ningún sistema es 100% infalible, pero
+        tomamos medidas razonables para evitar accesos no autorizados.
+      </p>
+
+      <h2><span>09</span>Cambios en esta política</h2>
+      <p>
+        Si cambiamos esta política, publicamos la nueva versión en esta misma
+        página con la fecha de actualización.
+      </p>
+
+      <div class="legend">
+        <p>
+          LA AGENCIA DE ACCESO A LA INFORMACIÓN PÚBLICA, en su carácter de
+          Órgano de Control de la Ley N° 25.326, tiene la atribución de atender
+          las denuncias y reclamos que interpongan quienes resulten afectados
+          en sus derechos por incumplimiento de las normas vigentes en materia
+          de protección de datos personales.
+        </p>
+      </div>
+    </main>
+
+    <footer>© 2026 Codelabs · Buenos Aires, Argentina</footer>
+  </body>
+</html>

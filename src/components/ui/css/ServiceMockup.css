@@ -1,0 +1,375 @@
+/* Wireframes en CSS. Bloques claros con baja opacidad sobre la superficie */
+.mock {
+  --block: color-mix(in srgb, var(--bata) 10%, transparent);
+  --block-strong: color-mix(in srgb, var(--bata) 22%, transparent);
+
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  padding: 18px;
+  background: var(--bg);
+
+  i {
+    display: block;
+    border-radius: 4px;
+    background: var(--block);
+  }
+}
+
+/* ---------- Piezas compartidas ---------- */
+.mock__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  span i {
+    width: 40px;
+    height: 7px;
+  }
+}
+
+.mock .mock__logo {
+  width: 64px;
+  height: 14px;
+  background: var(--accent);
+}
+
+.mock .mock__pill {
+  width: 56px;
+  height: 18px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.mock__line {
+  height: 9px;
+}
+.mock .mock__line--xl {
+  width: 70%;
+  height: 18px;
+  background: var(--block-strong);
+}
+.mock .mock__line--md {
+  width: 50%;
+}
+.mock .mock__line--sm {
+  width: 75%;
+}
+.mock .mock__line--xs {
+  width: 45%;
+  height: 7px;
+}
+
+/* ---------- Web ---------- */
+.mock__hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 0;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--probeta) 45%, transparent);
+}
+
+.mock .mock__btn {
+  width: 110px;
+  height: 26px;
+  margin-top: 6px;
+  border-radius: 7px;
+  background: var(--accent);
+}
+
+.mock__features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+}
+
+.mock .mock__circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.mock .mock__wa {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 6px 16px -4px rgba(37, 211, 102, 0.5);
+}
+
+/* ---------- E-commerce ---------- */
+.mock__search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  > i {
+    flex: 1;
+    height: 22px;
+    border: 1px solid var(--border);
+    background: transparent;
+  }
+
+  span {
+    display: flex;
+    gap: 6px;
+  }
+
+  span i {
+    width: 44px;
+    height: 22px;
+    border-radius: 999px;
+  }
+
+  span i:first-child {
+    background: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+}
+
+.mock__products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+}
+
+.mock .mock__thumb {
+  aspect-ratio: 4 / 3;
+  background: color-mix(in srgb, var(--probeta) 55%, transparent);
+}
+
+.mock .mock__price {
+  width: 40%;
+  height: 10px;
+  background: var(--alerta);
+}
+
+/* ---------- Sistemas ---------- */
+.mock--sistemas {
+  padding: 0;
+}
+
+.mock__app {
+  display: grid;
+  grid-template-columns: 22% 1fr;
+  height: 100%;
+}
+
+.mock__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 14px;
+  border-right: 1px solid var(--border);
+  background: color-mix(in srgb, var(--probeta) 25%, transparent);
+
+  .mock__logo {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  i:not(.mock__logo) {
+    height: 9px;
+  }
+
+  i.is-active {
+    background: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+}
+
+.mock__main {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+}
+
+.mock__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+}
+
+.mock .mock__stat {
+  width: 60%;
+  height: 16px;
+  background: var(--block-strong);
+}
+
+.mock__chart {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  gap: 8%;
+  padding: 10px 12px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  i {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
+  i:last-child {
+    background: var(--accent);
+  }
+}
+
+.mock__table {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr 48px;
+    gap: 14px;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  > div i {
+    height: 7px;
+  }
+}
+
+.mock .mock__tag {
+  height: 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+/* ---------- Automatizaciones ---------- */
+.mock--automatizaciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mock__flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mock__flow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mock__node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.mock__node--accent {
+  color: var(--text-h);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.mock .mock__node-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.mock .mock__connector {
+  width: 2px;
+  height: 22px;
+  border-radius: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--accent) 0 4px,
+    transparent 4px 8px
+  );
+}
+
+.mock__chat {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 30%;
+}
+
+.mock .mock__bubble {
+  width: 80%;
+  height: 16px;
+  border-radius: 8px 8px 8px 2px;
+}
+
+.mock .mock__bubble--out {
+  align-self: flex-end;
+  border-radius: 8px 8px 2px 8px;
+  background: color-mix(in srgb, #25d366 45%, transparent);
+}
+
+@media (max-width: 640px) {
+  .mock__node {
+    min-width: 170px;
+    font-size: 11px;
+  }
+
+  .mock__chat {
+    display: none;
+  }
+}

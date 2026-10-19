@@ -1,0 +1,141 @@
+.razones {
+  padding: 96px 0 112px;
+  border-top: 1px solid var(--border);
+}
+
+.razones__eyebrow {
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.razones__title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  letter-spacing: -0.03em;
+}
+
+.razones__text {
+  max-width: 640px;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Sin cajas: columnas separadas por líneas, para diferenciarse de Servicios */
+.razones__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0;
+  margin: 56px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.razon {
+  position: relative;
+  padding: 32px 28px 8px;
+  border-left: 1px solid var(--border);
+
+  &:first-child {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  /* Línea verde que crece sobre el borde superior al pasar el mouse */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.35s;
+  }
+
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+.razon__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.razon__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 12px;
+}
+
+.razon__index {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.razon__title {
+  font-size: 21px;
+  letter-spacing: -0.01em;
+}
+
+.razon__text {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .razon::before {
+    transition: none;
+  }
+}
+
+/* Tablet: 2x2 */
+@media (max-width: 1000px) {
+  .razones__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .razon {
+    padding: 32px 28px 32px;
+
+    &:nth-child(odd) {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    &:nth-child(n + 3) {
+      border-top: 1px solid var(--border);
+    }
+  }
+}
+
+/* Mobile: una columna */
+@media (max-width: 640px) {
+  .razones {
+    padding: 64px 0 80px;
+  }
+
+  .razones__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .razon {
+    padding: 28px 0;
+    border-left: none;
+
+    & + .razon {
+      border-top: 1px solid var(--border);
+    }
+  }
+}

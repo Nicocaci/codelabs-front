@@ -1,0 +1,289 @@
+.presupuesto {
+  padding: 96px 0 112px;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Encabezado centrado, como la referencia ---------- */
+.presupuesto__header {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.presupuesto__eyebrow {
+  margin-bottom: 16px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.presupuesto__title {
+  font-size: clamp(32px, 4.5vw, 52px);
+  letter-spacing: -0.03em;
+
+  span {
+    display: block;
+    color: var(--text-muted);
+  }
+}
+
+.presupuesto__text {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* ---------- Dos columnas ---------- */
+.presupuesto__carousel {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 56px;
+  align-items: start;
+  margin-top: 64px;
+}
+
+.presupuesto__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.presupuesto__arrow {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--text-h);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+.presupuesto__heading {
+  text-align: center;
+}
+
+.presupuesto__count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.presupuesto__plan {
+  margin-top: 6px;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Tarjeta del plan ---------- */
+.presupuesto__card {
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  animation: presupuesto-in 0.35s ease-out;
+}
+
+.presupuesto__desc {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.presupuesto__price {
+  padding: 24px;
+  margin: 24px 0;
+  text-align: center;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.presupuesto__price-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.presupuesto__price-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 10px;
+  margin-top: 8px;
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-h);
+}
+
+.presupuesto__price-value--pending {
+  color: var(--text-muted);
+}
+
+.presupuesto__price-sep {
+  color: var(--text-muted);
+}
+
+.presupuesto__price-currency {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+
+.presupuesto__vars {
+  padding: 20px 22px;
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-radius: 12px;
+
+  ul {
+    display: grid;
+    gap: 8px;
+    padding: 0;
+    margin: 12px 0 0;
+    font-size: 15px;
+    list-style: none;
+  }
+
+  li {
+    position: relative;
+    padding-left: 22px;
+
+    &::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      font-family: var(--font-mono);
+      color: var(--accent);
+    }
+  }
+}
+
+.presupuesto__vars-title {
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.presupuesto__note {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.presupuesto__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+/* ---------- Ventana ---------- */
+.presupuesto__visual {
+  position: sticky;
+  top: 100px;
+}
+
+.presupuesto__frame {
+  animation: presupuesto-in 0.35s ease-out;
+}
+
+.presupuesto__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.presupuesto__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  cursor: pointer;
+  background: var(--border);
+  border: none;
+  border-radius: 999px;
+  transition:
+    width 0.25s,
+    background-color 0.25s;
+
+  &[aria-current='true'] {
+    width: 28px;
+    background: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+@keyframes presupuesto-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presupuesto__card,
+  .presupuesto__frame {
+    animation: none;
+  }
+
+  .presupuesto__arrow,
+  .presupuesto__dot {
+    transition: none;
+  }
+}
+
+/* Tablet y mobile: una columna, la ventana arriba */
+@media (max-width: 960px) {
+  .presupuesto__carousel {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .presupuesto__visual {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .presupuesto {
+    padding: 64px 0 80px;
+  }
+
+  .presupuesto__card {
+    padding: 20px;
+  }
+
+  .presupuesto__cta .btn {
+    width: 100%;
+    white-space: normal;
+  }
+}

@@ -1,0 +1,259 @@
+/* OJO: no le pongas display a "dialog" a secas, o se vería siempre.
+   El flex va solo en [open]. */
+.modal {
+  width: min(960px, calc(100% - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+
+  &[open] {
+    display: flex;
+    flex-direction: column;
+    animation: modal-in 0.2s ease-out;
+  }
+
+  &::backdrop {
+    background: rgba(5, 10, 11, 0.78);
+    backdrop-filter: blur(4px);
+  }
+}
+
+/* Evita que se scrollee la página de atrás mientras el modal está abierto */
+body:has(dialog.modal[open]) {
+  overflow: hidden;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
+
+.modal__scroll {
+  overflow-y: auto;
+}
+
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  font-size: 16px;
+  color: var(--text-h);
+  cursor: pointer;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------- Galería ---------- */
+.modal__gallery {
+  position: relative;
+  background: var(--surface);
+
+  img {
+    width: 100%;
+    max-height: 56vh;
+    aspect-ratio: 16 / 9;
+    object-fit: contain; /* se ve la captura completa, sin recortes */
+  }
+}
+
+.modal__nav {
+  position: absolute;
+  top: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--text-h);
+  cursor: pointer;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  transform: translateY(-50%);
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.modal__nav--prev {
+  left: 14px;
+}
+
+.modal__nav--next {
+  right: 14px;
+}
+
+.modal__dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+
+  span {
+    width: 8px;
+    height: 8px;
+    background: var(--text-muted);
+    border-radius: 50%;
+  }
+
+  .is-active {
+    background: var(--accent);
+  }
+}
+
+/* ---------- Contenido ---------- */
+.modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+}
+
+.modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.modal__eyebrow,
+.modal__heading {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.modal__title {
+  margin: 8px 0 10px;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -0.02em;
+}
+
+.modal__lead {
+  max-width: 560px;
+  font-size: 18px;
+}
+
+.modal__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.modal__stat {
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  dd {
+    margin: 6px 0 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-h);
+  }
+}
+
+.modal__stat--accent dd {
+  color: var(--accent);
+}
+
+.modal__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+
+  p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
+.modal__features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 32px;
+  padding: 0;
+  margin: 14px 0 0;
+  font-size: 16px;
+  list-style: none;
+
+  li {
+    display: flex;
+    gap: 10px;
+
+    &::before {
+      content: '›';
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .modal {
+    width: calc(100% - 20px);
+    max-height: calc(100dvh - 20px);
+  }
+
+  .modal__body {
+    gap: 24px;
+    padding: 24px 20px;
+  }
+
+  .modal__header {
+    flex-direction: column;
+  }
+
+  .modal__columns,
+  .modal__features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal[open] {
+    animation: none;
+  }
+}

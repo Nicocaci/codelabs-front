@@ -1,0 +1,92 @@
+[
+  {
+    "nombre": "Altamar Outdoor",
+    "descripcion": "Tienda online de indumentaria y equipamiento outdoor con catálogo filtrable y checkout integrado.",
+    "fechaCreacion": "2026-08-14T12:00:00.000Z",
+    "imagen": ["https://placehold.co/1280x800/0c1618/3ee6a0/png?text=Altamar+Outdoor"],
+    "servicio": "E-commerce",
+    "desafio": "El cliente vendía solo por redes sociales y WhatsApp, sin control de stock ni medios de pago online.",
+    "solucion": "Tienda a medida con catálogo por categorías, stock en tiempo real y pagos integrados.",
+    "caracteristicas": ["Mercado Pago", "Stock en tiempo real", "Panel de pedidos", "Envíos por zona"],
+    "url": "https://example.com/altamar",
+    "destacado": true,
+    "resultado": "+90 ventas mensuales"
+  },
+  {
+    "nombre": "Estudio Núñez Arquitectos",
+    "descripcion": "Sitio institucional para estudio de arquitectura con portfolio de obras y formulario de contacto.",
+    "fechaCreacion": "2026-06-02T12:00:00.000Z",
+    "imagen": ["https://placehold.co/1280x800/2a4b4a/eef3f0/png?text=Estudio+Nunez"],
+    "servicio": "Desarrollo Web",
+    "desafio": "Sin presencia web propia, el estudio dependía de recomendaciones para conseguir clientes nuevos.",
+    "solucion": "Sitio rápido y visual, con galería de obras y contacto directo por WhatsApp.",
+    "caracteristicas": ["Galería de obras", "Contacto por WhatsApp", "SEO local"],
+    "url": "https://example.com/estudio-nunez",
+    "destacado": true,
+    "resultado": "+80 consultas por WhatsApp"
+  },
+  {
+    "nombre": "Turnos Clínica Rivera",
+    "descripcion": "Sistema de gestión de turnos y pacientes con agenda por profesional y recordatorios automáticos.",
+    "fechaCreacion": "2026-03-20T12:00:00.000Z",
+    "imagen": ["https://placehold.co/1280x800/0c1618/ffb84d/png?text=Turnos+Clinica+Rivera"],
+    "servicio": "Sistemas",
+    "desafio": "Los turnos se anotaban en papel y por teléfono, con muchas ausencias y superposiciones.",
+    "solucion": "Agenda online por profesional con recordatorios automáticos por mail y WhatsApp.",
+    "caracteristicas": ["Agenda por profesional", "Recordatorios automáticos", "Historial de pacientes"],
+    "url": "https://example.com/clinica-rivera",
+    "destacado": false,
+    "resultado": "-60% de ausentismo en turnos"
+  },
+  {
+    "nombre": "Café Brasa",
+    "descripcion": "Landing de cafetería con menú digital, galería del local y reservas online.",
+    "fechaCreacion": "2025-11-10T12:00:00.000Z",
+    "imagen": ["https://placehold.co/1280x800/2a4b4a/3ee6a0/png?text=Cafe+Brasa"],
+    "servicio": "Desarrollo Web",
+    "desafio": "El menú se compartía en fotos sueltas y las reservas se perdían entre mensajes.",
+    "solucion": "Landing con menú actualizable y formulario de reservas conectado al mail del local.",
+    "caracteristicas": ["Menú digital", "Reservas online"],
+    "url": "https://example.com/cafe-brasa",
+    "destacado": false,
+    "resultado": "+35% de reservas online"
+  },
+  {
+    "nombre": "Distribuidora Norte",
+    "descripcion": "Panel interno para gestión de pedidos, clientes y reportes de venta de una distribuidora mayorista.",
+    "fechaCreacion": "2025-09-05T12:00:00.000Z",
+    "imagen": ["https://placehold.co/1280x800/0c1618/eef3f0/png?text=Distribuidora+Norte"],
+    "servicio": "Sistemas",
+    "desafio": "Los pedidos se cargaban a mano en planillas, con errores frecuentes y sin reportes.",
+    "solucion": "Sistema web con carga de pedidos, cuentas de clientes y reportes automáticos.",
+    "caracteristicas": ["Gestión de pedidos", "Cuentas corrientes", "Reportes de venta", "Roles de usuario"],
+    "url": "https://example.com/distribuidora-norte",
+    "destacado": false,
+    "resultado": "Pedidos procesados 3 veces más rápido"
+  },
+  {
+    "nombre": "Pampa Tech Store",
+    "descripcion": "E-commerce de accesorios tecnológicos con variantes de producto, cupones de descuento y seguimiento de envíos.",
+    "fechaCreacion": "2025-05-18T12:00:00.000Z",
+    "imagen": ["https://placehold.co/1280x800/2a4b4a/ffb84d/png?text=Pampa+Tech+Store"],
+    "servicio": "E-commerce",
+    "desafio": "La tienda en una plataforma genérica no permitía variantes ni promociones propias.",
+    "solucion": "Tienda a medida con variantes por producto, cupones y seguimiento de envíos.",
+    "caracteristicas": ["Variantes de producto", "Cupones", "Seguimiento de envíos"],
+    "url": "https://example.com/pampa-tech",
+    "destacado": false,
+    "resultado": "+120 pedidos en el primer mes"
+  },
+  {
+    "nombre": "Fundación Raíces",
+    "descripcion": "Sitio institucional para una fundación, con secciones de proyectos, voluntariado y donaciones. Este proyecto no tiene imagen ni resultado, para probar cómo se ve una card incompleta.",
+    "fechaCreacion": "2025-02-01T12:00:00.000Z",
+    "imagen": [],
+    "servicio": "Desarrollo Web",
+    "desafio": "La fundación no tenía un lugar centralizado para mostrar su trabajo.",
+    "solucion": "Sitio institucional con secciones claras y formulario de voluntariado.",
+    "caracteristicas": [],
+    "url": "https://example.com/fundacion-raices",
+    "destacado": false
+  }
+]

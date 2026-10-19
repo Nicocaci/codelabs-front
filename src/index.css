@@ -1,0 +1,105 @@
+/* ---------- Brand Codelabs ---------- */
+:root {
+  /* Paleta de marca */
+  --ink: #0c1618; /* Tinta: fondos, texto */
+  --probeta: #2a4b4a; /* Probeta: superficies */
+  --reactivo: #3ee6a0; /* Reactivo: acento principal */
+  --alerta: #ffb84d; /* Alerta: detalles */
+  --bata: #eef3f0; /* Bata: fondo claro */
+
+  /* Tokens semánticos (los usan Navbar, Button, Hero...) */
+  --bg: var(--ink);
+  --surface: color-mix(in srgb, var(--probeta) 35%, var(--ink));
+  --border: color-mix(in srgb, var(--probeta) 70%, var(--ink));
+  --text: rgba(238, 243, 240, 0.72);
+  --text-muted: rgba(238, 243, 240, 0.42);
+  --text-h: var(--bata);
+  --accent: var(--reactivo);
+  --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.55);
+
+  /* Tipografías (se cargan en index.html) */
+  --font-sans: 'Space Grotesk', system-ui, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+
+  --container: 1200px;
+
+  /* La marca está pensada sobre fondo oscuro: un solo tema */
+  color-scheme: dark;
+}
+
+/* ---------- Reset mínimo ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px; /* alto aproximado del navbar sticky */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-h);
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--reactivo);
+  color: var(--ink);
+}
+
+/* ---------- Utilidades ---------- */
+/* Centra el contenido y limita el ancho. Usala dentro de cada sección */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

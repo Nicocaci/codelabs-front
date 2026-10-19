@@ -1,0 +1,152 @@
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition:
+    border-color 0.25s,
+    transform 0.25s;
+
+  &:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  /* Foco visible en toda la card cuando se navega con teclado */
+  &:has(.project-card__more:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+.project-card__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--bg);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* muestra la captura completa, sin recortes */
+    object-position: center;
+    transition: transform 0.4s;
+  }
+}
+
+.project-card:hover .project-card__media img {
+  transform: scale(1.03);
+}
+
+.project-card__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--alerta);
+  border-radius: 999px;
+}
+
+.project-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.project-card__meta {
+  display: flex;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.project-card__code {
+  color: var(--accent);
+}
+
+.project-card__year {
+  margin-left: auto;
+}
+
+.project-card__title {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.project-card__text {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.project-card__result {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+
+  span {
+    color: var(--text-muted);
+  }
+}
+
+.project-card__more {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 8px;
+  padding: 12px 0 0;
+  margin-top: auto;
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  /* Estira el área clickeable a toda la card */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  span {
+    transition: transform 0.2s;
+  }
+
+  &:focus-visible {
+    outline: none; /* el foco se dibuja en la card entera */
+  }
+}
+
+.project-card:hover .project-card__more span {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__media img,
+  .project-card__more span {
+    transition: none;
+  }
+
+  .project-card:hover,
+  .project-card:hover .project-card__media img,
+  .project-card:hover .project-card__more span {
+    transform: none;
+  }
+}

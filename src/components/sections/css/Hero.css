@@ -1,0 +1,79 @@
+.hero {
+  padding: 96px 0 112px;
+  overflow-x: clip; /* evita scroll horizontal por las tarjetas flotantes */
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 64px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-h);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+}
+
+.hero__title {
+  margin: 28px 0 24px;
+  font-size: clamp(40px, 5.6vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.hero__title-muted {
+  display: block;
+  color: var(--text-muted);
+}
+
+.hero__text {
+  max-width: 520px;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.hero__visual {
+  position: relative;
+}
+
+/* Mobile: solo texto y botones (la parte visual se oculta) */
+@media (max-width: 768px) {
+  .hero {
+    padding: 56px 0 72px;
+  }
+
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__visual {
+    display: none;
+  }
+}
