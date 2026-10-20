@@ -7,7 +7,8 @@ import './css/Presupuesto.css'
 // Moneda en la que mostrás los rangos. Cambiala acá si preferís ARS
 const MONEDA = 'USD'
 
-type Rango = { min: number; max: number }
+// Abono mensual de entrada (hosting, backups, seguridad y 1 h de cambios)
+const ABONO_DESDE = 40
 
 type Plan = {
   slug: string
@@ -15,12 +16,14 @@ type Plan = {
   url: string
   title: string
   description: string
-  // null = todavía sin precio: se muestra "A definir"
-  rango: Rango | null
+  // Precio de entrada en USD. null = se muestra "A definir"
+  desde: number | null
+  // Qué incluye exactamente ese precio de entrada
+  incluye: string
   variables: string[]
 }
 
-// TODO: completar los rangos cuando definas precios (Fase 2)
+// Precios de entrada (Fase 2). Lo más complejo se cotiza en la reunión
 const planes: Plan[] = [
   {
     slug: 'desarrollo-web',
@@ -29,7 +32,8 @@ const planes: Plan[] = [
     title: 'Desarrollo web',
     description:
       'Sitio institucional o landing pensada para que te encuentren y te escriban.',
-    rango: null,
+    desde: 150,
+    incluye: 'Landing de una página. Sitio institucional de 5 páginas: USD 300.',
     variables: [
       'Cantidad de secciones o páginas',
       'Textos y fotos (los tenés o los armamos)',
@@ -44,7 +48,9 @@ const planes: Plan[] = [
     title: 'E-commerce',
     description:
       'Tienda online con catálogo, carrito y cobro con Mercado Pago, lista para vender.',
-    rango: null,
+    desde: 500,
+    incluye:
+      'Catálogo online con buscador, filtros y pedido por WhatsApp. Tienda completa con Mercado Pago y envíos: a cotizar.',
     variables: [
       'Cantidad de productos y variantes',
       'Medios de pago y envío',
@@ -59,7 +65,8 @@ const planes: Plan[] = [
     title: 'Sistema de gestión',
     description:
       'Ventas, stock y caja en un solo lugar, accesible desde la PC o el celular.',
-    rango: null,
+    desde: 500,
+    incluye: 'Un módulo (por ejemplo, stock). Cada módulo extra se suma.',
     variables: [
       'Módulos (ventas, stock, caja, clientes…)',
       'Cantidad de usuarios y roles',
@@ -74,7 +81,8 @@ const planes: Plan[] = [
     title: 'Automatizaciones',
     description:
       'Tareas repetitivas que se hacen solas: avisos, respuestas y reportes.',
-    rango: null,
+    desde: 200,
+    incluye: 'Un flujo simple (por ejemplo, avisos automáticos de pedidos).',
     variables: [
       'Cantidad de flujos',
       'Herramientas a conectar',
@@ -109,8 +117,8 @@ function Presupuesto() {
             <span> tu proyecto?</span>
           </h2>
           <p className="presupuesto__text">
-            Rangos de referencia para que sepas dónde estás parado antes de
-            hablar.
+            Precios de entrada para que sepas dónde estás parado antes de
+            hablar. El valor final depende del alcance.
           </p>
         </header>
 
@@ -152,12 +160,10 @@ function Presupuesto() {
               <p className="presupuesto__desc">{plan.description}</p>
 
               <div className="presupuesto__price">
-                <span className="presupuesto__price-label">rango estimado</span>
-                {plan.rango ? (
+                <span className="presupuesto__price-label">desde</span>
+                {plan.desde !== null ? (
                   <p className="presupuesto__price-value">
-                    {formatPrecio(plan.rango.min)}
-                    <span className="presupuesto__price-sep">–</span>
-                    {formatPrecio(plan.rango.max)}
+                    {formatPrecio(plan.desde)}
                     <span className="presupuesto__price-currency">{MONEDA}</span>
                   </p>
                 ) : (
@@ -165,6 +171,7 @@ function Presupuesto() {
                     A definir
                   </p>
                 )}
+                <p className="presupuesto__price-detail">{plan.incluye}</p>
               </div>
 
               <div className="presupuesto__vars">
@@ -176,6 +183,10 @@ function Presupuesto() {
                 </ul>
                 <p className="presupuesto__note">
                   * El presupuesto final se define en una reunión sin cargo.
+                </p>
+                <p className="presupuesto__note">
+                  * Mantenimiento mensual (hosting, backups y cambios) desde{' '}
+                  {formatPrecio(ABONO_DESDE)} {MONEDA}.
                 </p>
               </div>
             </div>

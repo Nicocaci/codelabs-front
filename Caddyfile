@@ -17,6 +17,7 @@
 		-Server
 	}
 
-	try_files {path} /index.html
+	# {path}/index.html sirve /comercios → comercios/index.html
+	try_files {path} {path}/index.html /index.html
 	file_server
 }

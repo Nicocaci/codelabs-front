@@ -55,7 +55,7 @@ const items: { icon: ReactNode; title: string; text: string }[] = [
   },
 ]
 
-function Agendar() {
+function Agendar({ mensajeWhatsapp }: { mensajeWhatsapp?: string } = {}) {
   const sectionRef = useRef<HTMLElement>(null)
   // El embed se carga recién cuando la sección se acerca a la pantalla:
   // evita que el iframe haga scroll solo al cargar y no pesa en el primer render
@@ -155,10 +155,10 @@ function Agendar() {
           </p>
         )}
 
-        {whatsappUrl() && (
+        {whatsappUrl(mensajeWhatsapp) && (
           <div className="agendar__alt">
             <p>¿Preferís escribirnos directamente?</p>
-            <Button href={whatsappUrl()} variant="secondary">
+            <Button href={whatsappUrl(mensajeWhatsapp)} variant="secondary">
               Escribinos por WhatsApp <span aria-hidden="true">→</span>
             </Button>
           </div>

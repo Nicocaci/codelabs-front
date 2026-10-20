@@ -10,6 +10,7 @@ const navegacion: FooterLink[] = [
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Por qué elegirnos', href: '#por-que-elegirnos' },
   { label: 'Presupuesto', href: '#presupuesto' },
+  { label: 'Preguntas frecuentes', href: '#preguntas' },
   { label: 'Agendar reunión', href: '#comenzar-proyecto' },
 ]
 
@@ -53,9 +54,15 @@ const icons = {
   ),
 }
 
-function Footer() {
+type FooterProps = {
+  // Prefijo para los links a secciones de la home. En otras páginas: '/'
+  base?: string
+  mensajeWhatsapp?: string
+}
+
+function Footer({ base = '', mensajeWhatsapp }: FooterProps) {
   const year = new Date().getFullYear()
-  const wa = whatsappUrl()
+  const wa = whatsappUrl(mensajeWhatsapp)
 
   // Solo se muestran los datos que estén cargados en config/contacto.ts
   const contacto: { icon: ReactNode; label: string; href?: string }[] = [
@@ -69,7 +76,7 @@ function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
-            <a href="#inicio" className="footer__logo">
+            <a href={`${base}#inicio`} className="footer__logo">
               <img src="/logo-para-fondo-oscuro.svg" alt="Codelabs" />
             </a>
             <p className="footer__desc">
@@ -106,7 +113,7 @@ function Footer() {
             <ul>
               {navegacion.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href}>{link.label}</a>
+                  <a href={`${base}${link.href}`}>{link.label}</a>
                 </li>
               ))}
             </ul>
@@ -117,7 +124,7 @@ function Footer() {
             <ul>
               {servicios.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href}>{link.label}</a>
+                  <a href={`${base}${link.href}`}>{link.label}</a>
                 </li>
               ))}
             </ul>

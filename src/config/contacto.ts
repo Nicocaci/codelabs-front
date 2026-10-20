@@ -13,7 +13,8 @@ export const CONTACTO = {
   privacidadUrl: '/privacidad.html',
 }
 
-export const whatsappUrl = () =>
+// Podés pasar otro mensaje precargado (ej: el de la página /comercios)
+export const whatsappUrl = (mensaje: string = CONTACTO.mensajeWhatsapp) =>
   CONTACTO.whatsapp
-    ? `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(CONTACTO.mensajeWhatsapp)}`
+    ? `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(mensaje)}`
     : ''

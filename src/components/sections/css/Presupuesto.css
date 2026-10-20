@@ -143,6 +143,14 @@
   color: var(--text-muted);
 }
 
+.presupuesto__price-detail {
+  max-width: 34ch;
+  margin: 12px auto 0;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text);
+}
+
 .presupuesto__price-sep {
   color: var(--text-muted);
 }

@@ -10,12 +10,21 @@ type NavLink = {
 }
 
 // Los links viven fuera del componente: no se recrean en cada render
-const links: NavLink[] = [
+const linksHome: NavLink[] = [
   { label: 'Soluciones', href: '#soluciones' },
   { label: 'Portfolio', href: '#portfolio' }
 ]
 
-function Navbar() {
+type NavbarProps = {
+  // Links del menú (por defecto, los de la home)
+  links?: NavLink[]
+  // A dónde lleva el logo (en otras páginas: '/')
+  logoHref?: string
+  // Mensaje precargado del botón de WhatsApp
+  mensajeWhatsapp?: string
+}
+
+function Navbar({ links = linksHome, logoHref = '#inicio', mensajeWhatsapp }: NavbarProps) {
   // Menú móvil abierto/cerrado (TS infiere boolean)
   const [isOpen, setIsOpen] = useState(false)
   // Para agregar sombra cuando el usuario scrollea
@@ -43,7 +52,7 @@ function Navbar() {
   return (
     <header className={`container navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <nav className="navbar__inner" aria-label="Principal">
-        <a href="#inicio" className="navbar__logo" onClick={closeMenu}>
+        <a href={logoHref} className="navbar__logo" onClick={closeMenu}>
           <img src="/logo-para-fondo-oscuro.svg" alt="Codelabs" />
         </a>
 
@@ -72,7 +81,7 @@ function Navbar() {
             </li>
           ))}
           <li>
-            <Button href={whatsappUrl() || '#comenzar-proyecto'}>Comenzar Proyecto</Button>
+            <Button href={whatsappUrl(mensajeWhatsapp) || '#comenzar-proyecto'}>Comenzar Proyecto</Button>
           </li>
         </ul>
       </nav>
