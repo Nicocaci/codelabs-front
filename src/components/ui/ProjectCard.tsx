@@ -1,4 +1,5 @@
 import type { PortfolioProject } from '../../types/portfolio'
+import { cloudinarySrcSet, cloudinaryUrl } from '../../utils/cloudinary'
 import './css/ProjectCard.css'
 
 type ProjectCardProps = {
@@ -16,7 +17,14 @@ function ProjectCard({ project, index, onOpen }: ProjectCardProps) {
     <article className="project-card">
       <div className="project-card__media">
         {cover && (
-          <img src={cover} alt={`Captura del proyecto ${project.nombre}`} loading="lazy" />
+          <img
+            src={cloudinaryUrl(cover, 800)}
+            srcSet={cloudinarySrcSet(cover, [480, 800, 1200])}
+            sizes="(max-width: 768px) 100vw, 380px"
+            alt={`Captura del proyecto ${project.nombre}`}
+            loading="lazy"
+            decoding="async"
+          />
         )}
         {project.destacado && <span className="project-card__badge">Destacado</span>}
       </div>

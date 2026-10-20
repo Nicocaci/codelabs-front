@@ -2,7 +2,8 @@ import Button from '../ui/Button'
 import { whatsappUrl } from '../../config/contacto'
 import BrowserFrame from '../ui/BrowserFrame'
 import FloatingCard from '../ui/FloatingCard'
-import projectPreview from '../../assets/bulonera-home.png'
+import preview640 from '../../assets/bulonera-home-640.webp'
+import preview1200 from '../../assets/bulonera-home-1200.webp'
 import './css/Hero.css'
 
 function Hero() {
@@ -33,10 +34,18 @@ function Hero() {
 
         <div className="hero__visual">
           <BrowserFrame url="buloneraeltriangulo.com">
+            {/* WebP en 2 tamaños: el navegador elige según el ancho de pantalla.
+                width/height reservan el espacio y evitan saltos al cargar */}
             <img
-              src={projectPreview}
-              alt="Captura de un proyecto desarrollado por Codelabs"
+              src={preview1200}
+              srcSet={`${preview640} 640w, ${preview1200} 1200w`}
+              sizes="(max-width: 768px) 1px, (max-width: 1240px) 45vw, 560px"
+              width={1200}
+              height={588}
+              alt="Captura de la tienda online de Bulonera El Triángulo, desarrollada por Codelabs"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </BrowserFrame>
           <FloatingCard

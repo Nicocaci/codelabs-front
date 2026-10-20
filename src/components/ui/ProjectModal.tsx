@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { PortfolioProject } from '../../types/portfolio'
+import { cloudinarySrcSet, cloudinaryUrl } from '../../utils/cloudinary'
 import './css/ProjectModal.css'
 
 type GalleryProps = {
@@ -20,7 +21,10 @@ function Gallery({ images, name }: GalleryProps) {
   return (
     <div className="modal__gallery">
       <img
-        src={images[current]}
+        src={cloudinaryUrl(images[current], 1200)}
+        srcSet={cloudinarySrcSet(images[current], [800, 1200, 1800])}
+        sizes="(max-width: 960px) 100vw, 960px"
+        decoding="async"
         alt={`Captura ${current + 1} de ${images.length} del proyecto ${name}`}
       />
 
