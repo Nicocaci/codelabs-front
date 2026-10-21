@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react'
 import type { PortfolioProject } from '../../types/portfolio'
 import { cloudinarySrcSet, cloudinaryUrl } from '../../utils/cloudinary'
 import './css/ProjectModal.css'
@@ -8,27 +8,92 @@ type GalleryProps = {
   name: string
 }
 
-// Tiene su propio estado (imagen actual). Como el modal la usa con
-// key={project._id}, se reinicia sola al abrir otro proyecto.
+// Distancia mínima (px) para que un deslizamiento cuente como cambio de foto
+const SWIPE_THRESHOLD = 50
+
+// Slider de capturas. Tiene su propio estado (foto actual); como el modal
+// lo usa con key={project._id}, se reinicia solo al abrir otro proyecto.
 function Gallery({ images, name }: GalleryProps) {
   const [current, setCurrent] = useState(0)
+  const [dragX, setDragX] = useState(0) // desplazamiento mientras se arrastra
+  const startX = useRef<number | null>(null)
+  const total = images.length
 
-  if (images.length === 0) return null
+  const goTo = useCallback((i: number) => setCurrent((i + total) % total), [total])
+  const prev = useCallback(() => goTo(current - 1), [goTo, current])
+  const next = useCallback(() => goTo(current + 1), [goTo, current])
 
-  const prev = () => setCurrent((i) => (i - 1 + images.length) % images.length)
-  const next = () => setCurrent((i) => (i + 1) % images.length)
+  // Flechas del teclado mientras el modal está abierto
+  useEffect(() => {
+    if (total < 2) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [prev, next, total])
+
+  if (total === 0) return null
+
+  // Deslizar con el dedo (o arrastrar con el mouse)
+  const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    if (total < 2) return
+    startX.current = e.clientX
+    e.currentTarget.setPointerCapture(e.pointerId)
+  }
+  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (startX.current !== null) setDragX(e.clientX - startX.current)
+  }
+  const onPointerEnd = () => {
+    if (startX.current === null) return
+    if (dragX > SWIPE_THRESHOLD) prev()
+    else if (dragX < -SWIPE_THRESHOLD) next()
+    startX.current = null
+    setDragX(0)
+  }
 
   return (
-    <div className="modal__gallery">
-      <img
-        src={cloudinaryUrl(images[current], 1200)}
-        srcSet={cloudinarySrcSet(images[current], [800, 1200, 1800])}
-        sizes="(max-width: 960px) 100vw, 960px"
-        decoding="async"
-        alt={`Captura ${current + 1} de ${images.length} del proyecto ${name}`}
-      />
+    <div
+      className="modal__gallery"
+      role="region"
+      aria-roledescription="carrusel"
+      aria-label={`Capturas del proyecto ${name}`}
+    >
+      <div
+        className="modal__viewport"
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerEnd}
+        onPointerCancel={onPointerEnd}
+      >
+        <div
+          className={`modal__track ${dragX !== 0 ? 'is-dragging' : ''}`}
+          style={{ transform: `translateX(calc(${-current * 100}% + ${dragX}px))` }}
+        >
+          {images.map((src, i) => (
+            <div
+              key={src}
+              className="modal__slide"
+              aria-hidden={i !== current}
+              aria-roledescription="diapositiva"
+            >
+              <img
+                src={cloudinaryUrl(src, 1200)}
+                srcSet={cloudinarySrcSet(src, [800, 1200, 1800])}
+                sizes="(max-width: 960px) 100vw, 960px"
+                // La actual y sus vecinas se cargan ya; el resto cuando hagan falta
+                loading={Math.abs(i - current) <= 1 ? 'eager' : 'lazy'}
+                decoding="async"
+                draggable={false}
+                alt={`Captura ${i + 1} de ${total} del proyecto ${name}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
 
-      {images.length > 1 && (
+      {total > 1 && (
         <>
           <button
             type="button"
@@ -46,9 +111,21 @@ function Gallery({ images, name }: GalleryProps) {
           >
             ›
           </button>
-          <div className="modal__dots" aria-hidden="true">
-            {images.map((_, i) => (
-              <span key={i} className={i === current ? 'is-active' : ''} />
+
+          <span className="modal__counter" aria-live="polite">
+            {String(current + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          </span>
+
+          <div className="modal__dots">
+            {images.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                className={i === current ? 'is-active' : ''}
+                aria-label={`Ver imagen ${i + 1}`}
+                aria-current={i === current}
+                onClick={() => goTo(i)}
+              />
             ))}
           </div>
         </>
