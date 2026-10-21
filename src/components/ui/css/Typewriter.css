@@ -1,0 +1,50 @@
+.typewriter {
+  white-space: nowrap;
+}
+
+/* Fantasma y texto en la misma celda: el ancho lo define el más largo */
+.typewriter__box {
+  display: inline-grid;
+  vertical-align: bottom;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.typewriter__ghost {
+  visibility: hidden;
+}
+
+.typewriter__text {
+  color: var(--accent);
+}
+
+/* Cursor de bloque tipo terminal */
+.typewriter__cursor {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.06em;
+  vertical-align: -0.08em;
+  background: var(--accent);
+  border-radius: 1px;
+  animation: typewriter-blink 1s steps(1) infinite;
+
+  /* Mientras escribe o borra, fijo (como en una terminal real) */
+  &.is-typing {
+    animation: none;
+  }
+}
+
+@keyframes typewriter-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter__cursor {
+    animation: none;
+  }
+}

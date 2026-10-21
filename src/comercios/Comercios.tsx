@@ -1,3 +1,4 @@
+import { useState } from 'react'
 // Página para comercios con catálogo grande (codelabs.com.ar/comercios).
 // No figura en el menú de la home: es el link que va en los mensajes de prospección.
 import Navbar from '../components/layout/Navbar.tsx'
@@ -7,10 +8,27 @@ import Preguntas, { type Pregunta } from '../components/sections/Preguntas.tsx'
 import Button from '../components/ui/Button.tsx'
 import BrowserFrame from '../components/ui/BrowserFrame.tsx'
 import FloatingCard from '../components/ui/FloatingCard.tsx'
+import Typewriter from '../components/ui/Typewriter.tsx'
 import preview640 from '../assets/bulonera-home-640.webp'
 import preview1200 from '../assets/bulonera-home-1200.webp'
 import '../components/sections/css/Hero.css'
 import './Comercios.css'
+
+// Rubros que rotan en el título. Con ?rubro=... en el link (ej: /comercios?rubro=pintureria)
+// el rubro del comercio aparece primero: sirve para personalizar los mensajes de prospección.
+const RUBROS: Record<string, string> = {
+  ferreteria: 'ferretería',
+  bulonera: 'bulonera',
+  pintureria: 'pinturería',
+  catalogo: 'catálogo'
+}
+
+const rubrosOrdenados = (): string[] => {
+  const todos = Object.values(RUBROS)
+  const clave = new URLSearchParams(window.location.search).get('rubro')?.toLowerCase()
+  const elegido = clave ? RUBROS[clave] : undefined
+  return elegido ? [elegido, ...todos.filter((r) => r !== elegido)] : todos
+}
 
 const MENSAJE_WHATSAPP = 'Hola, vi la página de Codelabs para comercios y quiero consultar por mi negocio.'
 
@@ -140,6 +158,8 @@ const preguntas: Pregunta[] = [
 ]
 
 function Comercios() {
+  const [rubros] = useState(rubrosOrdenados)
+
   return (
     <>
       <Navbar links={links} logoHref="/" mensajeWhatsapp={MENSAJE_WHATSAPP} />
@@ -149,8 +169,8 @@ function Comercios() {
           <div className="container hero__inner">
             <div className="hero__content">
               <span className="hero__badge">Para comercios con catálogo grande</span>
-              <h1 className="hero__title">
-                Tu catálogo completo online,
+              <h1 className="hero__title hero__title--compact">
+                Tu <Typewriter words={rubros} /> online,
                 <span className="hero__title-muted">con precios que se actualizan en minutos.</span>
               </h1>
               <p className="hero__text">

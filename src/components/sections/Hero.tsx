@@ -2,9 +2,13 @@ import Button from '../ui/Button'
 import { whatsappUrl } from '../../config/contacto'
 import BrowserFrame from '../ui/BrowserFrame'
 import FloatingCard from '../ui/FloatingCard'
+import Typewriter from '../ui/Typewriter'
 import preview640 from '../../assets/bulonera-home-640.webp'
 import preview1200 from '../../assets/bulonera-home-1200.webp'
 import './css/Hero.css'
+
+// Palabras que rotan al final del título (la primera es la que leen los lectores de pantalla)
+const PALABRAS = ['tu negocio', 'tus ventas', 'tu marca']
 
 function Hero() {
   return (
@@ -15,7 +19,9 @@ function Hero() {
 
           <h1 className="hero__title">
             Webs, tiendas y sistemas
-            <span className="hero__title-muted">que hacen crecer tu negocio.</span>
+            <span className="hero__title-muted">
+              que hacen crecer <Typewriter words={PALABRAS} />
+            </span>
           </h1>
 
           <p className="hero__text">
