@@ -2,8 +2,6 @@ import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
 
-// En desarrollo, /comercios (sin barra final) mostraba la home.
-// Redirige a /comercios/ igual que hace Caddy en producción.
 const barraFinalComercios: Plugin = {
   name: 'barra-final-comercios',
   configureServer(server) {
