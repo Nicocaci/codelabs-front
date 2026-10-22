@@ -18,6 +18,11 @@
 	}
 
 	# {path}/index.html sirve /comercios → comercios/index.html
-	try_files {path} {path}/index.html /index.html
+	# Sin fallback a /index.html: las rutas inexistentes dan 404 real (evita soft 404 en Google)
+	try_files {path} {path}/index.html
 	file_server
+
+	handle_errors {
+		respond "Página no encontrada" 404
+	}
 }
