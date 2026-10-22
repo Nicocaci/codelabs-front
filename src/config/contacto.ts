@@ -3,9 +3,9 @@
 export const CONTACTO = {
   ubicacion: 'Buenos Aires, Argentina',
   // Solo números, con código de país y sin el 0 ni el 15. Ej: '5491112345678'
-  whatsapp: '5491173660802',
+  whatsapp: '5491123950414',
   // Cómo se muestra el número en pantalla. Ej: '+54 9 11 1234-5678'
-  telefonoVisible: '+54 9 11 73660802',
+  telefonoVisible: '+54 9 11 23950414',
   email: '',
   // Mensaje que aparece precargado al abrir WhatsApp
   mensajeWhatsapp: 'Hola! Vi la web de Codelabs y quiero consultar por un proyecto.',
