@@ -1,10 +1,10 @@
 {
   "imagen": [
-    "https://res.cloudinary.com/j5izixfe/image/upload/v1792178234/bulonera-home.png",
-    "/portfolio/bulonera/01-catalogo.webp",
-    "/portfolio/bulonera/02-producto.webp",
-    "/portfolio/bulonera/03-producto-detalle.webp",
-    "/portfolio/bulonera/04-cotizacion.webp",
-    "/portfolio/bulonera/05-checkout.webp"
+    "/portfolio/bulonera/home.webp",
+    "/portfolio/bulonera/catalogo.webp",
+    "/portfolio/bulonera/producto.webp",
+    "/portfolio/bulonera/nosotros.webp",
+    "/portfolio/bulonera/contacto.webp",
+    "/portfolio/bulonera/panel-admin.webp"
   ]
 }
